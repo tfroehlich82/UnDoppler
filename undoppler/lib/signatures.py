@@ -3,13 +3,9 @@ from .file_extensions import EXTENSIONS
 
 
 class Signature(object):
-    name = None
-    offset = 0
-    length = 0
-    signatures = []
-    extensions = None
 
     def __init__(self, name, offset=0, length=0, signatures=None):
+        self.signatures = []
         if signatures is None:
             signatures = []
         self.name = name
@@ -24,6 +20,9 @@ class Signature(object):
 
     def __repr__(self):
         return "%s: %s" % (self.name, self.get_signatures())
+
+    def __call__(self, *args, **kwargs):
+        return self.get_signatures()
 
 
 JPG_SIGNATURES = [
