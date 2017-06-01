@@ -27,12 +27,15 @@ class MediaType(object):
         return SIGNATURES.get(self.identifier, [])
 
     def analyze(self, filepath):
-        with open(filepath, 'rb') as file:
-            file.seek(self.signature.offset)
-            identifier_bytes = file.read(self.signature.length)
-            if identifier_bytes in self.signature.get_signatures():
-                return True
-            return False
+        if len(self.signature) > 0:
+            with open(filepath, 'rb') as file:
+                for sig in self.signature:
+                    file.seek(sig.offset)
+                    identifier_bytes = file.read(sig.length)
+                    if identifier_bytes == sig.signature:
+                        return True
+                return False
+        raise Exception()
 
 
 class Jpg(MediaType):

@@ -3,75 +3,62 @@ import binascii
 
 class Signature(object):
 
-    def __init__(self, name, offset=0, length=0, signatures=None):
-        self.signatures = []
-        if signatures is None:
-            signatures = []
-        self.name = name
+    def __init__(self, signature, offset=0, length=None):
+        self.signature = binascii.unhexlify(signature)
         self.offset = offset
-        self.length = length
-        # self.extensions = EXTENSIONS.get(self.name, [])
-        for sig in signatures:
-            self.signatures.append(binascii.unhexlify(sig))
-
-    def get_signatures(self):
-        return self.signatures
+        self.length = length or len(self.signature)
 
     def __repr__(self):
-        return "%s: %s" % (self.name, self.get_signatures())
-
-    def __call__(self, *args, **kwargs):
-        return self.get_signatures()
+        return str(self.signature)
 
 
-JPG_SIGNATURES = [
-    b'FFD8FFDB',
-    b'FFD8FFE0',
-    b'FFD8FFE1',
-]
+JPG_SIGNATURES = (
+    Signature(b'FFD8FFDB'),
+    Signature(b'FFD8FFE0'),
+    Signature(b'FFD8FFE1'),
+)
 
-GIF_SIGNATURES = [
-    b'474946383761',
-    b'474946383961',
-]
+GIF_SIGNATURES = (
+    Signature(b'474946383761'),
+    Signature(b'474946383961'),
+)
 
-ICO_SIGNATURES = [
-    b'00000100',
-]
+ICO_SIGNATURES = (
+    Signature(b'00000100'),
+)
 
-TIF_SIGNATURES = [
-    b'49492A00',
-    b'4D4D002A',
-]
+TIF_SIGNATURES = (
+    Signature(b'49492A00'),
+    Signature(b'4D4D002A'),
+)
 
-PNG_SIGNATURES = [
-    b'89504E470D0A1A0A',
-]
+PNG_SIGNATURES = (
+    Signature(b'89504E470D0A1A0A'),
+)
 
-MKV_SIGNATURES = [
-    b'1A45DFA3',
-]
+MKV_SIGNATURES = (
+    Signature(b'1A45DFA3'),
+)
 
 BMP_SIGNATURES = [
-    b'424D',
+    Signature(b'424D'),
 ]
 
-AVI_SIGNATURES = [
-    b'',  # ToDo
-]
-
-MP3_SIGNATURES = [
-    b'FFFB',
-    b''
-]
+# AVI_SIGNATURES = [
+#     b'',  # ToDo
+# ]
+#
+# MP3_SIGNATURES = [
+#     b'FFFB',
+#     b''
+# ]
 
 SIGNATURES = {
-    'JPG': Signature('jpg', 0, 4, JPG_SIGNATURES),
-    'GIF': Signature('gif', 0, 6, GIF_SIGNATURES),
-    'ICO': Signature('ico', 0, 4, ICO_SIGNATURES),
-    'TIF': Signature('tif', 0, 4, TIF_SIGNATURES),
-    'PNG': Signature('png', 0, 8, PNG_SIGNATURES),
-    'MKV': Signature('mkv', 0, 4, MKV_SIGNATURES),
-    'BMP': Signature('bmp', 0, 2, BMP_SIGNATURES),
-    'AVI': Signature('avi', 0, 2, AVI_SIGNATURES),  # ToDo
+    'JPG': JPG_SIGNATURES,
+    'GIF': GIF_SIGNATURES,
+    'ICO': ICO_SIGNATURES,
+    'TIF': TIF_SIGNATURES,
+    'PNG': PNG_SIGNATURES,
+    'MKV': MKV_SIGNATURES,
+    'BMP': BMP_SIGNATURES,
 }
