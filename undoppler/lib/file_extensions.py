@@ -1,7 +1,11 @@
 EXTENSIONS = {
-    'jpg': ['jpg', 'jpeg', ],
-    'gif': ['gif', ],
-    'ico': ['ico', ],
-    'tif': ['tif', 'tiff', ],
-    'png': ['png', ],
+    'JPG': ['jpg', 'jpeg', ],
+    'GIF': ['gif', ],
+    'ICO': ['ico', ],
+    'TIF': ['tif', 'tiff', ],
+    'PNG': ['png', ],
+    'MKV': ['mkv', 'mka', 'mks', 'mk3d', 'webm', ],
+    'BMP': ['bmp', 'dib', ],
+    'AVI': ['avi', ],
+    'MP3': ['mp3', ],
 }

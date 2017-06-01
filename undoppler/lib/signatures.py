@@ -1,5 +1,4 @@
 import binascii
-from .file_extensions import EXTENSIONS
 
 
 class Signature(object):
@@ -11,7 +10,7 @@ class Signature(object):
         self.name = name
         self.offset = offset
         self.length = length
-        self.extensions = EXTENSIONS.get(self.name, [])
+        # self.extensions = EXTENSIONS.get(self.name, [])
         for sig in signatures:
             self.signatures.append(binascii.unhexlify(sig))
 
@@ -49,10 +48,30 @@ PNG_SIGNATURES = [
     b'89504E470D0A1A0A',
 ]
 
+MKV_SIGNATURES = [
+    b'1A45DFA3',
+]
+
+BMP_SIGNATURES = [
+    b'424D',
+]
+
+AVI_SIGNATURES = [
+    b'',  # ToDo
+]
+
+MP3_SIGNATURES = [
+    b'FFFB',
+    b''
+]
+
 SIGNATURES = {
-    'jpg': Signature('jpg', 0, 4, JPG_SIGNATURES),
-    'gif': Signature('gif', 0, 6, GIF_SIGNATURES),
-    'ico': Signature('ico', 0, 4, ICO_SIGNATURES),
-    'tif': Signature('tif', 0, 4, TIF_SIGNATURES),
-    'png': Signature('png', 0, 8, PNG_SIGNATURES),
+    'JPG': Signature('jpg', 0, 4, JPG_SIGNATURES),
+    'GIF': Signature('gif', 0, 6, GIF_SIGNATURES),
+    'ICO': Signature('ico', 0, 4, ICO_SIGNATURES),
+    'TIF': Signature('tif', 0, 4, TIF_SIGNATURES),
+    'PNG': Signature('png', 0, 8, PNG_SIGNATURES),
+    'MKV': Signature('mkv', 0, 4, MKV_SIGNATURES),
+    'BMP': Signature('bmp', 0, 2, BMP_SIGNATURES),
+    'AVI': Signature('avi', 0, 2, AVI_SIGNATURES),  # ToDo
 }
