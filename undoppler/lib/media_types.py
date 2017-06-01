@@ -66,6 +66,18 @@ class Bmp(MediaType):
     identifier = 'BMP'
 
 
+class Avi(MediaType):
+    identifier = 'AVI'
+
+
+class Mp3(MediaType):
+    identifier = 'MP3'
+
+
+class Mp4(MediaType):
+    identifier = 'MP4'
+
+
 MEDIA_TYPES = [
     Jpg,
     Gif,
@@ -74,4 +86,7 @@ MEDIA_TYPES = [
     Png,
     Mkv,
     Bmp,
+    # Avi,
+    Mp3,
+    Mp4,
 ]
