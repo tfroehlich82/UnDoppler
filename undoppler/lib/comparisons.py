@@ -23,11 +23,11 @@ def compare_binary(file_1, file_2):
     return True
 
 
-def is_in(pattern, file_1):
-    with open(file_1, 'rb') as file1:
-        data1 = file1.read()
-
-    return pattern in data1
+# def is_in(pattern, file_1):
+#     with open(file_1, 'rb') as file1:
+#         data1 = file1.read()
+#
+#     return pattern in data1
 
 
 def get_filesize(f):

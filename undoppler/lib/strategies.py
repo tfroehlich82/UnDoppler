@@ -5,7 +5,7 @@ Module Documentation
 """
 
 
-from .comparisons import same_datetime, same_filesize, same_extension, same_filename, compare_binary, is_in
+from .comparisons import same_datetime, same_filesize, same_extension, same_filename, compare_binary
 
 
 __author__ = "Thorsten Froehlich <tfroehlich82@gmx.ch>"
@@ -24,7 +24,4 @@ Default_Strategy = [
         (same_filesize, True),
         (compare_binary, True),
     ],
-    [
-        (is_in, True)
-    ]
 ]
