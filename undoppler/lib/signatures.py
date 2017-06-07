@@ -1,15 +1,27 @@
+# -*- coding: utf-8 -*-
+
+"""
+Module Documentation
+"""
+
+
 import binascii
+
+
+__author__ = "Thorsten Froehlich <tfroehlich82@gmx.ch>"
+__version__ = 1.00
 
 
 class Signature(object):
 
     def __init__(self, signature, offset=0, length=None):
-        self.signature = binascii.unhexlify(str(signature, 'UTF-8').replace(" ", ""))
+        self._sig = signature
+        self.signature = binascii.unhexlify(str(self._sig, 'UTF-8').replace(" ", ""))
         self.offset = offset
         self.length = length or len(self.signature)
 
     def __repr__(self):
-        return str(self.signature)
+        return str(self._sig)
 
 
 JPG_SIGNATURES = (

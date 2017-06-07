@@ -9,6 +9,10 @@ from .file_extensions import EXTENSIONS
 from .signatures import SIGNATURES
 
 
+__author__ = "Thorsten Froehlich <tfroehlich82@gmx.ch>"
+__version__ = 1.00
+
+
 class MediaType(object):
     identifier = None
 
